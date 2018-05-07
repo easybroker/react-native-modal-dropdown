@@ -45,6 +45,7 @@ export default class ModalDropdown extends Component {
     keyboardShouldPersistTaps: PropTypes.string,
 
     style: PropTypes.oneOfType([PropTypes.number, PropTypes.object, PropTypes.array]),
+    buttonStyle: PropTypes.oneOfType([PropTypes.number, PropTypes.object, PropTypes.array]),
     textStyle: PropTypes.oneOfType([PropTypes.number, PropTypes.object, PropTypes.array]),
     dropdownStyle: PropTypes.oneOfType([PropTypes.number, PropTypes.object, PropTypes.array]),
     dropdownTextStyle: PropTypes.oneOfType([PropTypes.number, PropTypes.object, PropTypes.array]),
@@ -164,11 +165,12 @@ export default class ModalDropdown extends Component {
   }
 
   _renderButton() {
-    const {disabled, accessible, children, textStyle} = this.props;
+    const {disabled, accessible, children, textStyle, buttonStyle} = this.props;
     const {buttonText} = this.state;
 
     return (
-      <TouchableOpacity ref={button => this._button = button}
+      <TouchableOpacity style={buttonStyle}
+                        ref={button => this._button = button}
                         disabled={disabled}
                         accessible={accessible}
                         onPress={this._onButtonPress}
